@@ -1,0 +1,6 @@
+node_modules
+frontend/build
+backend/public
+backend/dist
+.env
+fly.toml

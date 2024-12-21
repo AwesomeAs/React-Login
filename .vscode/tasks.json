@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Copy Frontend Build",
+      "type": "shell",
+      "dependsOn": "Build Frontend",
+      "command": "xcopy",
+      "args": [
+        "${workspaceFolder}\\frontend\\build",
+        "${workspaceFolder}\\backend\\public",
+        "/E", // Copies subdirectories, including empty ones
+        "/I", // Creates the folder if it doesn't exist
+        "/Y"  // Yes to prompts
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Build Frontend",
+      "type": "shell",
+      "dependsOn": "Build Backend",
+      "command": "npm",
+      "args": ["run", "build"],
+      "options": {
+        "cwd": "${workspaceFolder}\\frontend\\"
+      }
+    },
+    {
+      "label": "Build Backend",
+      "type": "shell",
+      "command": "npm",
+      "args": ["run", "build"],
+      "options": {
+        "cwd": "${workspaceFolder}\\backend\\"
+      }
+    },
+  ]
+}
